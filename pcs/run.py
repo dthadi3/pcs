@@ -10,8 +10,8 @@ import sys
 
 from pcs import settings
 
-if settings.pcs_bundled_pacakges_dir not in sys.path:
-    sys.path.insert(0, settings.pcs_bundled_pacakges_dir)
+if settings.pcs_bundled_packages_dir not in sys.path:
+    sys.path.insert(0, settings.pcs_bundled_packages_dir)
 
 # pylint: disable=unused-import, wrong-import-position
 from pcs.daemon.run import main as daemon
