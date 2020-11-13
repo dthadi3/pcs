@@ -101,7 +101,7 @@ class GetClusterStatusText(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_MON@", "--one-shot", "--inactive"]
+            ["@PCMKEXECPREFIX@/sbin/crm_mon", "--one-shot", "--inactive"]
         )
         self.assertEqual(self.expected_stdout, real_status)
         self.assertEqual(warnings, [])
@@ -114,7 +114,7 @@ class GetClusterStatusText(TestCase):
 
         mock_runner.run.assert_called_once_with(
             [
-                "@CRM_MON@",
+                "@PCMKEXECPREFIX@/sbin/crm_mon",
                 "--one-shot",
                 "--inactive",
                 "--show-detail",
@@ -141,7 +141,7 @@ class GetClusterStatusText(TestCase):
 
         mock_runner.run.assert_called_once_with(
             [
-                "@CRM_MON@",
+                "@PCMKEXECPREFIX@/sbin/crm_mon",
                 "--one-shot",
                 "--inactive",
                 "--show-detail",
@@ -159,7 +159,7 @@ class GetClusterStatusText(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_MON@", "--one-shot"]
+            ["@PCMKEXECPREFIX@/sbin/crm_mon", "--one-shot"]
         )
         self.assertEqual(self.expected_stdout, real_status)
         self.assertEqual(warnings, [])
@@ -172,7 +172,7 @@ class GetClusterStatusText(TestCase):
 
         mock_runner.run.assert_called_once_with(
             [
-                "@CRM_MON@",
+                "@PCMKEXECPREFIX@/sbin/crm_mon",
                 "--one-shot",
                 "--show-detail",
                 "--show-node-attributes",
@@ -194,7 +194,7 @@ class GetClusterStatusText(TestCase):
             ),
         )
         mock_runner.run.assert_called_once_with(
-            ["@CRM_MON@", "--one-shot", "--inactive"]
+            ["@PCMKEXECPREFIX@/sbin/crm_mon", "--one-shot", "--inactive"]
         )
 
     def test_warnings(self):
@@ -206,7 +206,7 @@ class GetClusterStatusText(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_MON@", "--one-shot", "--inactive"]
+            ["@PCMKEXECPREFIX@/sbin/crm_mon", "--one-shot", "--inactive"]
         )
         self.assertEqual(self.expected_stdout, real_status)
         self.assertEqual(warnings, ["msgA", "msgC"])
@@ -221,7 +221,7 @@ class GetClusterStatusText(TestCase):
 
         mock_runner.run.assert_called_once_with(
             [
-                "@CRM_MON@",
+                "@PCMKEXECPREFIX@/sbin/crm_mon",
                 "--one-shot",
                 "--inactive",
                 "--show-detail",
@@ -531,7 +531,7 @@ class UpgradeCibTest(TestCase):
         mock_runner = get_runner("", "", 0)
         lib._upgrade_cib(mock_runner)
         mock_runner.run.assert_called_once_with(
-            ["@CIBADMIN@", "--upgrade", "--force"]
+            ["@PCMKEXECPREFIX@/sbin/cibadmin", "--upgrade", "--force"]
         )
 
     def test_error(self):
@@ -550,7 +550,7 @@ class UpgradeCibTest(TestCase):
             ),
         )
         mock_runner.run.assert_called_once_with(
-            ["@CIBADMIN@", "--upgrade", "--force"]
+            ["@PCMKEXECPREFIX@/sbin/cibadmin", "--upgrade", "--force"]
         )
 
 

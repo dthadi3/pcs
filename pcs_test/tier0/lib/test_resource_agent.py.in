@@ -138,7 +138,7 @@ class ListResourceAgentsStandardsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-standards"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-standards"]
         )
 
     def test_success_filter_whitespace(self):
@@ -167,7 +167,7 @@ class ListResourceAgentsStandardsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-standards"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-standards"]
         )
 
     def test_empty(self):
@@ -177,7 +177,7 @@ class ListResourceAgentsStandardsTest(TestCase):
         self.assertEqual(lib_ra.list_resource_agents_standards(mock_runner), [])
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-standards"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-standards"]
         )
 
     def test_error(self):
@@ -189,7 +189,7 @@ class ListResourceAgentsStandardsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-standards"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-standards"]
         )
 
 
@@ -215,7 +215,7 @@ class ListResourceAgentsOcfProvidersTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-ocf-providers"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-ocf-providers"]
         )
 
     def test_success_filter_whitespace(self):
@@ -240,7 +240,7 @@ class ListResourceAgentsOcfProvidersTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-ocf-providers"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-ocf-providers"]
         )
 
     def test_empty(self):
@@ -252,7 +252,7 @@ class ListResourceAgentsOcfProvidersTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-ocf-providers"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-ocf-providers"]
         )
 
     def test_error(self):
@@ -264,7 +264,7 @@ class ListResourceAgentsOcfProvidersTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-ocf-providers"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-ocf-providers"]
         )
 
 
@@ -313,8 +313,8 @@ class ListResourceAgentsStandardsAndProvidersTest(TestCase):
         self.assertEqual(2, len(mock_runner.run.mock_calls))
         mock_runner.run.assert_has_calls(
             [
-                mock.call(["@CRM_RESOURCE@", "--list-standards"]),
-                mock.call(["@CRM_RESOURCE@", "--list-ocf-providers"]),
+                mock.call(["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-standards"]),
+                mock.call(["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-ocf-providers"]),
             ]
         )
 
@@ -334,7 +334,7 @@ class ListResourceAgentsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-agents", "ocf"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-agents", "ocf"]
         )
 
     def test_success_standard_provider(self):
@@ -353,7 +353,7 @@ class ListResourceAgentsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-agents", "ocf:pacemaker"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-agents", "ocf:pacemaker"]
         )
 
     def test_bad_standard(self):
@@ -369,7 +369,7 @@ class ListResourceAgentsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-agents", "nonsense"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-agents", "nonsense"]
         )
 
 
@@ -403,7 +403,7 @@ class ListStonithAgentsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-agents", "stonith"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-agents", "stonith"]
         )
 
     def test_no_agents(self):
@@ -417,7 +417,7 @@ class ListStonithAgentsTest(TestCase):
         self.assertEqual(lib_ra.list_stonith_agents(mock_runner), [])
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-agents", "stonith"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-agents", "stonith"]
         )
 
     def test_filter_hidden_agents(self):
@@ -461,7 +461,7 @@ class ListStonithAgentsTest(TestCase):
         )
 
         mock_runner.run.assert_called_once_with(
-            ["@CRM_RESOURCE@", "--list-agents", "stonith"]
+            ["@PCMKEXECPREFIX@/sbin/crm_resource", "--list-agents", "stonith"]
         )
 
 
@@ -1579,7 +1579,7 @@ class CrmAgentMetadataGetMetadataTest(TestCase, ExtendedAssertionsMixin):
 
         self.mock_runner.run.assert_called_once_with(
             [
-                "@CRM_RESOURCE@",
+                "@PCMKEXECPREFIX@/sbin/crm_resource",
                 "--show-metadata",
                 self.agent._get_full_name(),
             ],
@@ -1597,7 +1597,7 @@ class CrmAgentMetadataGetMetadataTest(TestCase, ExtendedAssertionsMixin):
 
         self.mock_runner.run.assert_called_once_with(
             [
-                "@CRM_RESOURCE@",
+                "@PCMKEXECPREFIX@/sbin/crm_resource",
                 "--show-metadata",
                 self.agent._get_full_name(),
             ],
@@ -1618,7 +1618,7 @@ class CrmAgentMetadataGetMetadataTest(TestCase, ExtendedAssertionsMixin):
 
         self.mock_runner.run.assert_called_once_with(
             [
-                "@CRM_RESOURCE@",
+                "@PCMKEXECPREFIX@/sbin/crm_resource",
                 "--show-metadata",
                 self.agent._get_full_name(),
             ],
@@ -1681,7 +1681,7 @@ class StonithAgentMetadataGetMetadataTest(TestCase, ExtendedAssertionsMixin):
 
         self.mock_runner.run.assert_called_once_with(
             [
-                "@CRM_RESOURCE@",
+                "@PCMKEXECPREFIX@/sbin/crm_resource",
                 "--show-metadata",
                 "stonith:{0}".format(self.agent_name),
             ],
@@ -1825,7 +1825,7 @@ class StonithAgentMetadataGetParametersTest(TestCase):
             [
                 mock.call(
                     [
-                        "@CRM_RESOURCE@",
+                        "@PCMKEXECPREFIX@/sbin/crm_resource",
                         "--show-metadata",
                         "stonith:{0}".format(self.agent_name),
                     ],
