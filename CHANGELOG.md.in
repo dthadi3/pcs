@@ -1,6 +1,6 @@
 # Change Log
 
-## [Unreleased]
+## [@VERSION@] - @UTC_DATE@
 
 ### Fixed
 - Improved error message with a hint in `pcs cluster cib-push` ([ghissue#241])
