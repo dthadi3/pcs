@@ -90,7 +90,7 @@ def corosync_conf_fixture(node_list=(), quorum_options=(), qdevice_net=False):
 
         logging {{
             to_logfile: yes
-            logfile: /var/log/cluster/corosync.log
+            logfile: @COROLOGDIR@/corosync.log
             to_syslog: yes
         }}
         """
