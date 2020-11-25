@@ -30,6 +30,7 @@ from pcs_test.tools.misc import (
 )
 from pcs_test.tools.pcs_runner import pcs, PcsRunner
 
+from pcs import settings
 from pcs.constraint import (
     LOCATION_NODE_VALIDATION_SKIP_MSG,
     CRM_RULE_MISSING_MSG,
@@ -1883,7 +1884,7 @@ Ticket Constraints:
         os.system(
             "CIB_file="
             + self.temp_cib.name
-            + ' cibadmin -R --scope nodes --xml-text \'<nodes><node id="1" uname="rh7-1"/><node id="2" uname="rh7-2"/></nodes>\''
+            + f' {settings.pacemaker_binaries}/cibadmin -R --scope nodes --xml-text \'<nodes><node id="1" uname="rh7-1"/><node id="2" uname="rh7-2"/></nodes>\''
         )
 
         o, r = pcs(
@@ -2122,7 +2123,7 @@ Ticket Constraints:
         os.system(
             "CIB_file="
             + self.temp_cib.name
-            + ' cibadmin -R --scope nodes --xml-text \'<nodes><node id="1" uname="rh7-1"/><node id="2" uname="rh7-2"/></nodes>\''
+            + f' {settings.pacemaker_binaries}/cibadmin -R --scope nodes --xml-text \'<nodes><node id="1" uname="rh7-1"/><node id="2" uname="rh7-2"/></nodes>\''
         )
 
         o, r = pcs(
@@ -2355,7 +2356,7 @@ Ticket Constraints:
         os.system(
             "CIB_file="
             + self.temp_cib.name
-            + ' cibadmin -R --scope nodes --xml-text \'<nodes><node id="1" uname="rh7-1"/><node id="2" uname="rh7-2"/></nodes>\''
+            + f' {settings.pacemaker_binaries}/cibadmin -R --scope nodes --xml-text \'<nodes><node id="1" uname="rh7-1"/><node id="2" uname="rh7-2"/></nodes>\''
         )
 
         # pcs no longer allows creating masters but supports existing ones. In
@@ -2365,7 +2366,7 @@ Ticket Constraints:
         os.system(
             "CIB_file="
             + self.temp_cib.name
-            + ' cibadmin -R --scope constraints --xml-text \'<constraints><rsc_location id="cli-prefer-stateful0-master" role="Master" rsc="stateful0-master" node="rh7-1" score="INFINITY"/><rsc_location id="cli-ban-stateful0-master-on-rh7-1" rsc="stateful0-master" role="Slave" node="rh7-1" score="-INFINITY"/></constraints>\''
+            + f' {settings.pacemaker_binaries}/cibadmin -R --scope constraints --xml-text \'<constraints><rsc_location id="cli-prefer-stateful0-master" role="Master" rsc="stateful0-master" node="rh7-1" score="INFINITY"/><rsc_location id="cli-ban-stateful0-master-on-rh7-1" rsc="stateful0-master" role="Slave" node="rh7-1" score="-INFINITY"/></constraints>\''
         )
 
         o, r = pcs(self.temp_cib.name, ["constraint"])
