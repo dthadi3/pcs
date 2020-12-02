@@ -1,5 +1,9 @@
 language: generic
 
+arch:
+    - AMD64
+    - ppc64le 
+
 sudo: required
 
 env:
